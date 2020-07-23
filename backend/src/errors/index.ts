@@ -14,7 +14,7 @@ const routesError = (
       message: err.message,
     });
   }
-  console.error(err);
+  // console.error(err);
   return response.status(500).json({
     status: 'error',
     message: 'Internal Server Error',
