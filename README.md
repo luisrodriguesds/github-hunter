@@ -20,7 +20,7 @@ $ cd oowlish-luis-fast-test
 
 # Go into the backend
 
-$ cd oowlish-luis-fast-test
+$ cd backend
 
 # Install packages
 
@@ -32,7 +32,6 @@ $ yarn start
 
 # Go into the frontend
 
-$ cd ..
 $ cd frontend
 
 # Install packages
@@ -61,7 +60,7 @@ $ cd oowlish-luis-fast-test
 
 # Go into the backend
 
-$ cd oowlish-luis-fast-test
+$ cd backend
 
 # Install packages
 
@@ -73,7 +72,6 @@ $ yarn test
 
 # Go into the frontend
 
-$ cd ..
 $ cd frontend
 
 # Install packages
