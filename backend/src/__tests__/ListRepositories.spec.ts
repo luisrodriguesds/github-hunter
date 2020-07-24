@@ -1,5 +1,5 @@
-import app from '../../app';
-import api from '../../infra/api';
+import app from '../app';
+import api from '../infra/api';
 import request from 'supertest';
 import MockAdapter from 'axios-mock-adapter';
 
@@ -37,7 +37,6 @@ describe('ListRepository', () => {
   });
 
   it('should not be able to list repository by non-exinting username', async () => {
-    // Cause not exit username with space
     const mock = new MockAdapter(api);
 
     mock.onGet('/users/luisrodriguesds/repos').reply(404);
