@@ -18,23 +18,12 @@ const Paginate: React.FC<Props> = ({ totalRow, currentPage, perPage, totalPage, 
     return <div />;
   }
 
-  const limitShowPages = 3
-  let pages = []
-  if (totalPage <= limitShowPages) {
-    pages = Array(limitShowPages).fill(null).map((_,i) => i)
-  }else if(currentPage <= totalPage && currentPage > (totalPage-limitShowPages)){
-    pages = Array(limitShowPages).fill(null).map((_,i) => totalPage-i-1)
-    pages.reverse()
-  }else{
-    for (let i = (currentPage-1); i < ((totalPage-limitShowPages)+(currentPage-1)); i++) {
-      pages.push(i)
-    }
-  }
+  let pages = Array(totalPage).fill(null).map((_,i) => i)
 
   async function load(page: number): Promise<void>{
     await handleLoadNewPage(page)
   }
-
+  console.log(pages);
   return (
     <Container>
       <ul>
