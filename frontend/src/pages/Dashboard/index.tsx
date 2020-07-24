@@ -42,7 +42,11 @@ const Dashboard: React.FC = () => {
       setNewUser('');
       setInputError('');
     } catch (error) {
-      setInputError('Usuário não encontrado');
+      if (error.response && error.response.status === 404) {
+        setInputError('Usuário não encontrado');
+        return;
+      }
+      setInputError('Por favor tente novamente mais tarde!');
     }
     setLoadingInput(false);
   }
@@ -79,6 +83,12 @@ const Dashboard: React.FC = () => {
 
       <Repositories data-testid="repository-list">
         {loadingInput && <h2>Carregando ...</h2>}
+
+        {repositories && repositories.data.length === 0 ? (
+          <h2>Nenhum Repositório Encontrado</h2>
+        ) : (
+          ''
+        )}
 
         {repositories &&
           !loadingInput &&

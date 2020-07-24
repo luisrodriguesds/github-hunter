@@ -1,18 +1,11 @@
-import React, { HTMLProps } from 'react';
+import React from 'react';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
 import { Container } from './styles';
-import { sign } from 'crypto';
 
-interface Props extends HTMLProps<HTMLElement> {
-  totalRow: number;
-  currentPage: number;
-  totalPage: number;
-  perPage: number;
-  handleLoadNewPage(newPage: number): Promise<void>;
-}
+import IPaginate from '../../interfaces/IPaginate';
 
-const Paginate: React.FC<Props> = ({
+const Paginate: React.FC<IPaginate> = ({
   totalRow,
   currentPage,
   perPage,
@@ -27,7 +20,7 @@ const Paginate: React.FC<Props> = ({
   let count = 0;
   for (let i = currentPage - 1; i <= currentPage + 1; i++) {
     if (currentPage <= 2) {
-      pages.push(count + 1);
+      count + 1 <= totalPage && pages.push(count + 1);
     } else if (currentPage === totalPage) {
       pages.push(currentPage - (count === 0 ? 2 : count === 1 ? 1 : 0));
     } else {
@@ -39,7 +32,7 @@ const Paginate: React.FC<Props> = ({
   async function load(page: number): Promise<void> {
     await handleLoadNewPage(page);
   }
-  console.log(pages);
+
   return (
     <Container>
       <ul>
@@ -53,6 +46,7 @@ const Paginate: React.FC<Props> = ({
           <li
             key={page + 1}
             onClick={() => load(page)}
+            data-testid={`page-${page}`}
             className={`${page === currentPage ? `active` : ``}`}
           >
             {page}
