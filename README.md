@@ -1,5 +1,5 @@
 <h2 align="center">
-  Fast Test Ooowlish - React + Node
+  Github hunter
 </h2>
 
 ## 🚀 About
